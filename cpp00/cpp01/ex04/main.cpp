@@ -6,7 +6,7 @@
 /*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:10:33 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/07/23 16:10:34 by sghajdao         ###   ########.fr       */
+/*   Updated: 2022/07/24 11:54:10 by sghajdao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@ std::string my_replace(std::string s1, std::string s2, std::string buf)
 {
     int i;
 
+    if (s1.empty() == true)
+        return buf;
     i = buf.find(s1);
     while (i != std::string::npos)
     {
         buf.erase(i, s1.length());
         buf.insert(i, s2);
-        i = buf.find(s1);
+        i = buf.find(s1, i + s2.length());
     }
-    return (buf);
+    return buf;
 }
 
 int main(int ac, char **av)
@@ -55,13 +57,13 @@ int main(int ac, char **av)
             while (std::getline(infile, buf))
             {
                 buf = my_replace(s1, s2, buf);
-                outfile << buf;
+                outfile << buf << std::endl;
             }
             outfile.close();
         }
         else
         {
-            std::perror("out file error.");
+            std::perror("outfile error.");
             infile.close();
             return (1);
         }
