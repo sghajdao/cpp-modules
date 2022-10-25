@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akremcht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:47:46 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/10/24 13:40:34 by sghajdao         ###   ########.fr       */
+/*   Updated: 2022/10/25 11:58:39 by akremcht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Form::Form(const std::string name, int sign_grade, int exec_grade): name(name), 
     this->checkExecGard();
 }
 
-Form::Form(const Form &src): name(src.getName()), sign(false), sign_grade(src.getSignGrade()), exec_grade(getExecGrade())
+Form::Form(const Form &src): name(src.getName()), sign(false), sign_grade(src.getSignGrade()), exec_grade(src.getExecGrade())
 {
     std::cout << "Form copy Constructor called" << std::endl;
     *this = src;

@@ -3,30 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akremcht <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:18:39 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/10/24 17:19:03 by sghajdao         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:00:43 by akremcht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
     try
     {
-        std::cout << "\033[34mConstructing\033[0m" << std::endl;
-        Bureaucrat *bureau = new Bureaucrat(149);
-        std::cout << bureau << std::endl;
-        ShrubberyCreationForm *s = new ShrubberyCreationForm("jardin");
-        s->beSigned(*bureau);
-        s->execute(*bureau);
-        std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
-        delete bureau;
-        delete s;
+		std::cout << "\033[34mConstructing\033[0m" << std::endl;
+        Intern someRandomIntern;
+		Form* rrf;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
+		Bureaucrat *bureau = new Bureaucrat(149);
+		rrf->beSigned(*bureau);
+		rrf->execute(*bureau);
+		std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
+		delete rrf;
+		delete bureau;
     }
     catch(std::exception &e)
     {
@@ -36,40 +39,27 @@ int main()
 
 /* int main()
 {
-    try
-    {
-        std::cout << "\033[34mConstructing\033[0m" << std::endl;
-        Bureaucrat *bureau = new Bureaucrat(149);
-        std::cout << bureau << std::endl;
-        RobotomyRequestForm *s = new RobotomyRequestForm("robot");
-        s->beSigned(*bureau);
-        for(int i = 0; i<=10; i++)
-            s->execute(*bureau);
-        std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
-        delete bureau;
-        delete s;
-    }
-    catch(std::exception &e)
-    {
-        std::cerr << "\033[33m" << e.what() << "\033[0m" << std::endl;
-    }
-} */
-
-/* int main()
-{
-    try
-    {
-        std::cout << "\033[34mConstructing\033[0m" << std::endl;
-        Bureaucrat *bureau = new Bureaucrat(149);
-        std::cout << bureau << std::endl;
-        PresidentialPardonForm *p = new PresidentialPardonForm("28B");
-        p->beSigned(*bureau);
-        p->execute(*bureau);
-        std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
-        delete bureau;
-        delete p;
-    }
-    catch(std::exception &e)
+	try
+	{
+		std::cout << "\033[34mConstructing\033[0m" << std::endl;
+		Bureaucrat *bureau = new Bureaucrat(146);
+		Intern intern;
+		
+		std::string forms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+		
+		for(int i = 0; i < 3; i++)
+		{
+			std::cout << "\033[34mConstructing\033[0m" << std::endl;
+			Form *form = intern.makeForm(forms[i], "Jardin");
+			form->beSigned(*bureau);
+			form->execute(*bureau);
+			std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
+			delete form;
+		}
+		std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
+		delete bureau;
+	}
+	catch(std::exception &e)
     {
         std::cerr << "\033[33m" << e.what() << "\033[0m" << std::endl;
     }
@@ -77,43 +67,32 @@ int main()
 
 /* int main()
 {
-    try
-    {
-        std::cout << "\033[34mConstructing\033[0m" << std::endl;
-        Bureaucrat *bureau[3];
-        ShrubberyCreationForm *s = new ShrubberyCreationForm("Jardin");
-        RobotomyRequestForm *f = new RobotomyRequestForm("Robot");
-        PresidentialPardonForm *p = new PresidentialPardonForm("28B");
-        
-        bureau[0] = new Bureaucrat(135);
-        bureau[1] = new Bureaucrat(149);
-        bureau[2] = new Bureaucrat(10);
+	try
+	{
+		std::cout << "\033[34mConstructing\033[0m" << std::endl;
+		Bureaucrat *brt = new Bureaucrat(25);
+		if (brt == NULL)
+		{
+			perror("Allocation failed");
+    	    exit(1);
+		}
+		Intern stg;
+		Form *frm;
 
-        for(int i = 0; i < 3; i++)
-            std::cout << bureau[i] << std::endl;
-        
-        f->beSigned(*bureau[1]);
-        p->beSigned(*bureau[2]);
-        
-        for(int i = 0; i <= 10; i++)
-            bureau[0]->decriment();
-        
-        s->beSigned(*bureau[0]);
-        s->execute(*bureau[0]);
-
-        f->beSigned(*bureau[1]);
-        f->execute(*bureau[1]);
-
-        p->beSigned(*bureau[2]);
-        p->execute(*bureau[2]);
-        std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
-        for(int i = 0; i < 3; i++)
-            delete bureau[i];
-        delete s;
-        delete f;
-        delete p;
-    }
-    catch(std::exception &e)
+		frm = stg.makeForm("presidential pardon", "Criminel");
+		frm->beSigned(*brt);
+		frm->execute(*brt);
+		for(int i = 0; i <= 21; i++)
+			brt->increment();
+		
+		std::cout << brt << std::endl;
+		frm->execute(*brt);
+		
+		std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
+		delete brt;
+		delete frm;
+	}
+	catch(std::exception &e)
     {
         std::cerr << "\033[33m" << e.what() << "\033[0m" << std::endl;
     }
