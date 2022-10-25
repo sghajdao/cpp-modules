@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akremcht <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:18:39 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/10/25 12:00:43 by akremcht         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:21:32 by sghajdao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int main()
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 
 		Bureaucrat *bureau = new Bureaucrat(149);
+		if (bureau == NULL)
+		{
+			perror("Allocation failed");
+    	    exit(1);
+		}
 		rrf->beSigned(*bureau);
 		rrf->execute(*bureau);
 		std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
@@ -43,6 +48,11 @@ int main()
 	{
 		std::cout << "\033[34mConstructing\033[0m" << std::endl;
 		Bureaucrat *bureau = new Bureaucrat(146);
+		if (bureau == NULL)
+		{
+			perror("Allocation failed");
+    	    exit(1);
+		}
 		Intern intern;
 		
 		std::string forms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};

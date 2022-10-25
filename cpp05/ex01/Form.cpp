@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akremcht <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:47:46 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/10/25 11:58:39 by akremcht         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:24:30 by sghajdao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,6 @@ bool Form::beSigned(Bureaucrat &bureau)
     }
 }
 
-void Form::execute(Bureaucrat const &executor)const
-{
-	(void)executor;
-}
-
 const char *Form::GradeTooHighException::what(void) const throw()
 {
     return ("Grade too high");
@@ -108,11 +103,6 @@ const char *Form::GradeTooHighException::what(void) const throw()
 const char *Form::GradeTooLowException::what(void) const throw()
 {
     return ("Grade too low");
-};
-
-const char *Form::FormNotSigned::what(void) const throw()
-{
-    return ("Form not signed");
 };
 
 std::ostream &operator<<(std::ostream &o, Form *a)
