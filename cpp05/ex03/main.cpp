@@ -6,7 +6,7 @@
 /*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:18:39 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/10/25 13:04:37 by sghajdao         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:55:17 by sghajdao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
 
-int main()
+/* int main()
 {
+	std::cout << "\033[34mConstructing\033[0m" << std::endl;
+    Intern someRandomIntern;
+	Form* rrf;
+	Bureaucrat *bureau;
     try
     {
-		std::cout << "\033[34mConstructing\033[0m" << std::endl;
-        Intern someRandomIntern;
-		Form* rrf;
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 		if (rrf == NULL)
 		{
@@ -29,7 +30,7 @@ int main()
 			return (0);
 		}
 
-		Bureaucrat *bureau = new Bureaucrat(149);
+		bureau = new Bureaucrat(149);
 		if (bureau == NULL)
 		{
 			perror("Allocation failed");
@@ -37,22 +38,24 @@ int main()
 		}
 		rrf->beSigned(*bureau);
 		rrf->execute(*bureau);
-		std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
-		delete rrf;
-		delete bureau;
     }
     catch(std::exception &e)
     {
         std::cerr << "\033[33m" << e.what() << "\033[0m" << std::endl;
     }
-}
+	std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
+	delete rrf;
+	delete bureau;
+} */
 
 /* int main()
 {
+	std::cout << "\033[34mConstructing\033[0m" << std::endl;
+	Bureaucrat *bureau;
+	Form *form;
 	try
 	{
-		std::cout << "\033[34mConstructing\033[0m" << std::endl;
-		Bureaucrat *bureau = new Bureaucrat(146);
+		bureau = new Bureaucrat(146);
 		if (bureau == NULL)
 		{
 			perror("Allocation failed");
@@ -65,7 +68,7 @@ int main()
 		for(int i = 0; i < 3; i++)
 		{
 			std::cout << "\033[34mConstructing\033[0m" << std::endl;
-			Form *form = intern.makeForm(forms[i], "Jardin");
+			form = intern.makeForm(forms[i], "Formular");
 			if (form == NULL)
 			{
 				std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
@@ -78,30 +81,31 @@ int main()
 			std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
 			delete form;
 		}
-		std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
-		delete bureau;
 	}
 	catch(std::exception &e)
     {
         std::cerr << "\033[33m" << e.what() << "\033[0m" << std::endl;
     }
+	std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
+	delete bureau;
 } */
 
-/* int main()
+int main()
 {
+	std::cout << "\033[34mConstructing\033[0m" << std::endl;
+	Bureaucrat *brt;
+	Intern stg;
+	Form *frm;
 	try
 	{
-		std::cout << "\033[34mConstructing\033[0m" << std::endl;
-		Bureaucrat *brt = new Bureaucrat(25);
+		brt = new Bureaucrat(25);
 		if (brt == NULL)
 		{
 			perror("Allocation failed");
     	    exit(1);
 		}
-		Intern stg;
-		Form *frm;
 
-		frm = stg.makeForm("preesidential pardon", "Criminel");
+		frm = stg.makeForm("presidential pardon", "Criminel");
 		if (frm == NULL)
 		{
 			std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
@@ -117,12 +121,12 @@ int main()
 		std::cout << brt << std::endl;
 		frm->execute(*brt);
 		
-		std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
-		delete brt;
-		delete frm;
 	}
 	catch(std::exception &e)
     {
         std::cerr << "\033[33m" << e.what() << "\033[0m" << std::endl;
     }
-} */
+	std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
+	delete brt;
+	delete frm;
+}

@@ -6,7 +6,7 @@
 /*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:44:28 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/10/24 17:15:14 by sghajdao         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:37:11 by sghajdao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int main()
 {
+    Bureaucrat *a;
     try
     {
         std::cout << "\033[34mConstructing\033[0m" << std::endl;
-        Bureaucrat *a = new Bureaucrat("saad", 2);
+        a = new Bureaucrat("saad", 2);
         if (a == NULL)
         {
             perror("Allocation failed");
@@ -26,21 +27,21 @@ int main()
         std::cout << a << std::endl;
         a->increment();
         //a->increment();
-        std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
-        delete a;
     }
     catch(Bureaucrat::GradeTooHighException &e)
     {
         std::cerr << "\033[33m" << e.what() << "\033[0m" << std::endl;
     }
+    std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
+    delete a;
 }
 
 /* int main()
 {
     std::cout << "\033[34mConstructing\033[0m" << std::endl;
+    Bureaucrat *t[3];
     try
     {
-        Bureaucrat *t[3];
         for(int i = 0; i <= 2; i++){
             if (i == 0)
                 t[i] = new Bureaucrat(140);
@@ -63,29 +64,31 @@ int main()
             t[1]->increment();
             t[2]->increment();
         }
-        std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
-        for(int i = 0; i <= 2; i++)
-            delete t[i];
     }
     catch(std::exception &e)
     {
         std::cerr << "\033[33m" << e.what() << "\033[0m" << std::endl;
     }
+    std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
+    for(int i = 0; i <= 2; i++)
+        delete t[i];
 } */
 
 /* int main()
 {
+     std::cout << "\033[34mConstructing\033[0m" << std::endl;
+    Bureaucrat *a;
+    Bureaucrat *b;
     try
     {
-        std::cout << "\033[34mConstructing\033[0m" << std::endl;
-        Bureaucrat *a = new Bureaucrat("abc", 149);
+        a = new Bureaucrat("abc", 149);
         if (a == NULL)
         {
             perror("Allocation failed");
             exit(1);
         }
         std::cout << a << std::endl;
-        Bureaucrat *b(a);
+        b = new Bureaucrat(*a);
         std::cout << b << std::endl;
         a->decriment();
         a->decriment();
@@ -95,5 +98,7 @@ int main()
     {
         std::cerr << "\033[33m" << e.what() << "\033[0m" << std::endl;
     }
+    std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
     delete a;
+    delete b;
 } */
