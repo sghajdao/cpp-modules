@@ -6,7 +6,7 @@
 /*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:18:39 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/10/25 12:21:32 by sghajdao         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:04:37 by sghajdao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int main()
         Intern someRandomIntern;
 		Form* rrf;
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		if (rrf == NULL)
+		{
+			delete rrf;
+			return (0);
+		}
 
 		Bureaucrat *bureau = new Bureaucrat(149);
 		if (bureau == NULL)
@@ -61,6 +66,13 @@ int main()
 		{
 			std::cout << "\033[34mConstructing\033[0m" << std::endl;
 			Form *form = intern.makeForm(forms[i], "Jardin");
+			if (form == NULL)
+			{
+				std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
+				delete bureau;
+				delete form;
+				return (0);
+			}
 			form->beSigned(*bureau);
 			form->execute(*bureau);
 			std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
@@ -89,7 +101,14 @@ int main()
 		Intern stg;
 		Form *frm;
 
-		frm = stg.makeForm("presidential pardon", "Criminel");
+		frm = stg.makeForm("preesidential pardon", "Criminel");
+		if (frm == NULL)
+		{
+			std::cout << "\033[0;31mDestructors\033[0;37m" << std::endl;
+			delete frm;
+			delete brt;
+			return (0);
+		}
 		frm->beSigned(*brt);
 		frm->execute(*brt);
 		for(int i = 0; i <= 21; i++)

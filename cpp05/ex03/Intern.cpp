@@ -6,7 +6,7 @@
 /*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:06:26 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/10/25 12:06:27 by sghajdao         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:52:12 by sghajdao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ Form *Intern::makeForm(const std::string &name, const std::string &target)const
 	}
 	Form *form = new Form(name);
 	switch(i){
-		case 0 : form = new ShrubberyCreationForm(target);break;
-		case 1 : form = new RobotomyRequestForm(target);break;
-		case 2 : form = new PresidentialPardonForm(target);break;
+		case 0 : std::cout << "Intern creates ShrubberyCreationForm\n"; form = new ShrubberyCreationForm(target);break;
+		case 1 : std::cout << "Intern creates RobotomyRequestForm\n"; form = new RobotomyRequestForm(target);break;
+		case 2 : std::cout << "Intern creates PresidentialPardonForm\n"; form = new PresidentialPardonForm(target);break;
 	}
 	if (form == NULL)
 	{

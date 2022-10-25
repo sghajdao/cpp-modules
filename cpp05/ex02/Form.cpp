@@ -6,7 +6,7 @@
 /*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:47:46 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/10/25 12:24:09 by sghajdao         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:54:51 by sghajdao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ const char *Form::FormNotSigned::what(void) const throw()
 
 std::ostream &operator<<(std::ostream &o, Form *a)
 {
-    o << "Bureaucrat " << a->getName() << " with sign grade: " << a->getSignGrade()
+    o << "Form " << a->getName() << " with sign grade: " << a->getSignGrade()
     << " and execution grade: " << a->getExecGrade();
 	return (o);
 }
