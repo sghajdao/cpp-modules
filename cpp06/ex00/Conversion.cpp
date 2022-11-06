@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Conversion.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/02 16:57:50 by sghajdao          #+#    #+#             */
+/*   Updated: 2022/11/05 14:12:22 by sghajdao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Conversion.hpp"
 
-// Constructors
 Conversion::Conversion()
 {
 	std::cout << "Conversion Default Constructor called" << std::endl;
@@ -21,13 +32,11 @@ Conversion::Conversion(const Conversion &src): _input(src.getInput())
 	this->printOutput();
 }
 
-// Deconstructors
 Conversion::~Conversion()
 {
 	std::cout << "Conversion Deconstructor called" << std::endl;
 }
 
-// Overloaded Operators
 Conversion &Conversion::operator=(const Conversion &src)
 {
 	std::cout << "Conversion Assignation operator called" << std::endl;
@@ -46,7 +55,7 @@ int	Conversion::checkInput()
 {
 	if (this->getInput().compare("nan") == 0 || this->getInput().compare("+inf") == 0 ||
 		this->getInput().compare("-inf") == 0 || this->getInput().compare("+inff") == 0 ||
-		this->getInput().compare("-inff") == 0)
+		this->getInput().compare("-inff") == 0 || this->getInput().compare("nanf") == 0)
 	{
 		return (NAN_INF);
 	}
@@ -56,7 +65,7 @@ int	Conversion::checkInput()
 	{
 		return (CHAR);
 	}
-	else if (this->getInput().find_first_of("+-") != this->getInput().find_last_of("+-")) // catches any multiple or mixed use of + and -
+	else if (this->getInput().find_first_of("+-") != this->getInput().find_last_of("+-")) // catches multiple + and -
 		return (ERROR);
 	else if (this->getInput().find_first_not_of("+-0123456789") == std::string::npos)
 		return (INT);
@@ -99,7 +108,7 @@ void Conversion::fromChar(void)
 void Conversion::fromInt(void)
 {
 	this->_int = static_cast<int>(this->getDouble());
-	this->_char = static_cast<unsigned char>(this->getInt());
+	this->_char = static_cast<char>(this->getInt());
 	this->_float = static_cast<float>(this->getDouble());
 }
 void Conversion::fromFloat(void)
@@ -200,13 +209,11 @@ void	Conversion::printOutput(void)const
 	}
 }
 
-// Exceptions
 const char *Conversion::ErrorException::what(void) const throw()
 {
 	return ("Error: Impossible to print or input not convertable");
-};
+}
 
-// Getter
 std::string	Conversion::getInput(void)const
 {
 	return (this->_input);

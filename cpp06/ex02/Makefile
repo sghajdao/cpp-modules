@@ -1,4 +1,4 @@
-NAME_P := Identify
+NAME_P := identify
 
 CC = c++
 

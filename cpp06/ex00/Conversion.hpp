@@ -1,10 +1,16 @@
-#include <string>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Conversion.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/04 16:28:55 by sghajdao          #+#    #+#             */
+/*   Updated: 2022/11/05 14:47:45 by sghajdao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
-#include <limits>
-#include <climits>
-#include <cstdlib>
-#include <cstring>
-#include <cctype>
 
 #define NAN_INF 1
 #define ERROR 2
@@ -12,8 +18,6 @@
 #define INT 4
 #define FLOAT 5
 #define DOUBLE 6
-
-// classes
 
 class Conversion
 {
@@ -24,10 +28,11 @@ class Conversion
 		int _int;
 		float _float;
 		double _double;
-
-		// Constructor
+	public:
 		Conversion();
-		// Methods
+		Conversion(const std::string input);
+		Conversion(const Conversion &src);
+		~Conversion();
 		int checkInput(void);
 		void convertInput(void);
 
@@ -38,30 +43,18 @@ class Conversion
 
 		void printOutput(void)const;
 
-		// Getter
 		std::string getInput(void)const;
 		int getType(void)const;
 		char getChar(void)const;
 		int getInt(void)const;
 		float getFloat(void)const;
 		double getDouble(void)const;
-		// Setter
-	public:
-	// Constructors
-		Conversion(const std::string input);
-		Conversion(const Conversion &src);
 
-	// Deconstructors
-		~Conversion();
-
-	// Overloaded Operators
 		Conversion &operator=(const Conversion &src);
 
-	//Exceptions
 	class ErrorException : public std::exception
 	{
-	public:
-		virtual const char *what() const throw();
+		public:
+			virtual const char *what() const throw();
 	};
-	// Public Methods
 };

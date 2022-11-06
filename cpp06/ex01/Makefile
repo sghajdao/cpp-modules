@@ -1,4 +1,4 @@
-NAME_P := Serialize
+NAME_P := serialize
 
 CC = c++
 
@@ -11,12 +11,12 @@ OBJECTS = $(SRC:.cpp=.o)
 all: $(NAME_P)
 
 $(NAME_P): $(OBJECTS)
-	@echo "\033[0;32m\n\nCompiling Bureaucrat..."
+	@echo "\033[0;32m\n\nCompiling serialize..."
 	@$(CC) -o $(NAME_P) $(OBJECTS)
 	@echo "\n\033[0;32mDone."
 
 %.o:%.cpp structs.hpp
-	@printf "\033[0;33mGenerating Bureaucrat objects... %-10.10s\r" $@
+	@printf "\033[0;33mGenerating serialize objects... %-10.10s\r" $@
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

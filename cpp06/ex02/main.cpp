@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/04 16:26:01 by sghajdao          #+#    #+#             */
+/*   Updated: 2022/11/05 14:48:08 by sghajdao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
-#include <cstdlib>
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
 
-Base	*generate( void )
+Base	*generate(void)
 {
 	int	selected = rand() % 3;
 
@@ -18,7 +29,7 @@ Base	*generate( void )
 		throw new std::exception();
 }
 
-void	identify( Base &p )
+void	identify(Base &p)
 {
 	try
 	{
@@ -52,7 +63,7 @@ void	identify( Base &p )
 	}
 }
 
-void	identify( Base *p )
+void	identify(Base *p)
 {
 	A *a;
 	if ((a = dynamic_cast<A *>(p)))
@@ -65,7 +76,7 @@ void	identify( Base *p )
 		std::cout << "C" << std::endl;
 }
 
-int	main( void )
+int	main(void)
 {
 	Base	*base;
 
@@ -74,6 +85,11 @@ int	main( void )
 	for(int i = 0; i <= 8; i++)
 	{
 		base = generate();
+		if (base == NULL)
+		{
+			perror("Allocation failed");
+			exit(1);
+		}
 		identify(base);
 		delete base;
 	}
@@ -84,6 +100,11 @@ int	main( void )
 	for(int i = 0; i <= 8; i++)
 	{
 		base = generate();
+		if (base == NULL)
+		{
+			perror("Allocation failed");
+			exit(1);
+		}
 		identify(*base);
 		delete base;
 	}

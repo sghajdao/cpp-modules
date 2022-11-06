@@ -1,4 +1,4 @@
-NAME_P := Convert
+NAME_P := convert
 
 CC = c++
 
@@ -11,12 +11,12 @@ OBJECTS = $(SRC:.cpp=.o)
 all: $(NAME_P)
 
 $(NAME_P): $(OBJECTS)
-	@echo "\033[0;32m\n\nCompiling Bureaucrat..."
+	@echo "\033[0;32m\n\nCompiling convert..."
 	@$(CC) -o $(NAME_P) $(OBJECTS)
 	@echo "\n\033[0;32mDone."
 
 %.o:%.cpp Conversion.hpp
-	@printf "\033[0;33mGenerating Bureaucrat objects... %-10.10s\r" $@
+	@printf "\033[0;33mGenerating convert objects... %-10.10s\r" $@
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
