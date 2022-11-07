@@ -6,7 +6,7 @@
 /*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 17:27:34 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/11/07 14:27:57 by sghajdao         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:35:22 by sghajdao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ class Array
         }
         Array &operator=(const Array &src)
 		{
-            //if (this->_size > 0)
-			//	    delete [] this->_array;
 			if (src._size != 0)
 			{
 				this->_size = src.size();
@@ -54,7 +52,7 @@ class Array
 		}
         T &operator[](const unsigned int index)
         {
-            if (index >= this->_size || index < 0)
+            if (index >= this->_size)
                 throw std::overflow_error("Index out of bounds");
             return this->_array[index];
         }
