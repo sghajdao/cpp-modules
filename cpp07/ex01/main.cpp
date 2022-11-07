@@ -6,13 +6,13 @@
 /*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 17:03:32 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/11/06 17:03:33 by sghajdao         ###   ########.fr       */
+/*   Updated: 2022/11/07 16:29:28 by sghajdao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 
-void interest(int &i)
+void interest(int const &i)
 {
     if (i <= 0)
     {
@@ -26,9 +26,8 @@ void interest(int &i)
     }
 }
 
-void upper(char &c)
+void print(char const &c)
 {
-    c = toupper(c);
     std::cout << c;
 }
 
@@ -41,6 +40,6 @@ int main()
     iter(array, 4, interest);
 
     std::cout << "\033[34mTesting 2\033[0m" << std::endl;
-    iter(string, 9, upper);
+    iter(string, 9, print);
     std::cout << std::endl;
 }
