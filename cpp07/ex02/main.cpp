@@ -6,59 +6,65 @@
 /*   By: sghajdao <sghajdao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:10:48 by sghajdao          #+#    #+#             */
-/*   Updated: 2022/11/07 14:01:05 by sghajdao         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:13:58 by sghajdao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 
-#define MAX_VAL 750
-int main(int, char**)
+int main()
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
+    std::cout << "\033[34mTesting 1\033[0m" << std::endl;
+    Array<int> table(10);
+    std::cout << "array content:" << std::endl;
+    for(int i = 0; i < 10; i++)
     {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
+        table[i] = i;
+        std::cout << table[i] << " ";
     }
-    //SCOPE
+    std::cout << std::endl;
+/*-------------------------------------------------------------------------*/
+    std::cout << "\033[34mTesting 2\033[0m" << std::endl;
+    Array<int> *array = new Array<int>(2);
+    array[0] = 2;
+    array[0][0] = 0;
+    array[0][1] = 1;
+    array[1] = 5;
+    std::cout << "array1 content:" << std::endl;
+    for(int i = 0; i < 2; i++)
+        std::cout << array[0][i] << " ";
+    std::cout << std::endl;
+    std::cout << "array1 content:" << std::endl;
+    for(int i = 0; i < 5; i++)
     {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
+        array[1][i] = i;
+        std::cout << array[1][i] << " ";
     }
-
-    for (int i = 0; i < MAX_VAL; i++)
+    std::cout << std::endl;
+/*-------------------------------------------------------------------------*/
+    Array<char> *string = new Array<char>(2);
+    std::cout << "\033[34mTesting 3\033[0m" << std::endl;
+    string[0] = 5;
+    string[0][0] = 'h';
+    string[0][1] = 'e';
+    string[0][2] = 'l';
+    string[0][3] = 'l';
+    string[0][4] = 'o';
+    string[1] = 5;
+    string[1][0] = 'w';
+    string[1][1] = 'o';
+    string[1][2] = 'r';
+    string[1][3] = 'l';
+    string[1][4] = 'd';
+    std::cout << "arrays content:" << std::endl;
+    for(int i = 0; i < 5; i++)
     {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
+        std::cout << string[0][i];
     }
-    try
+    std::cout << " ";
+    for(int i = 0; i < 5; i++)
     {
-        numbers[-2] = 0;
+        std::cout << string[1][i];
     }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
-    return 0;
+    std::cout << std::endl;
 }
