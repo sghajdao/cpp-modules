@@ -67,3 +67,12 @@ int	Span::longestSpan()
 	sort(tmp.begin(), tmp.end());
 	return *(tmp.end() - 1) - *tmp.begin();
 }
+
+void Span::addByIteratorRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	std::vector<int>	tmp(begin, end);
+
+	if (tmp.size() > (this->N - this->vect.size()))
+		throw std::out_of_range("Cannot add any more numbers");
+	copy(tmp.begin(), tmp.end(), std::back_inserter(this->vect));
+}

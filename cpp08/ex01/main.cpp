@@ -19,10 +19,12 @@ int main()
 //     try
 //     {
 //         Span sp = Span(100000);
+//         std::vector<int> vect;
 //         for(int i = 0; i < 100000; i++)
 //         {
-//             sp.addNumber(i);
+//             vect.push_back(i);
 //         }
+//         sp.addByIteratorRange(vect.begin(), vect.end());
 //         std::cout << sp.shortestSpan() << std::endl;
 //         std::cout << sp.longestSpan() << std::endl;
 //     }
