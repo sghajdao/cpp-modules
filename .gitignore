@@ -1,0 +1,6 @@
+*.o
+RPN
+btc
+PmergeMe
+.vscode
+.DS_Store
